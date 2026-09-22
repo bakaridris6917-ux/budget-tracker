@@ -1,0 +1,78 @@
+/*_----------------Element selectors-----------------*/
+/* These target every element of that type on the page. */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+    color: #222;
+}
+
+h1 {
+    margin: 0;
+}
+
+input {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #256428;
+}
+
+/*----------------Class selectors-----------------*/
+/* .card is requested on both sections so they share a common "card" look */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    margin-bottom: 19px;
+}
+
+.subheading {
+    color: #555;
+    font-size: 15px;
+}
+
+.placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+/*----------------ID selectors-----------------*/
+/* These target one specific, unique element each. */
+#add-expense {
+    border-left: 5px solid #2e7d32; /* green accent = "input" section */
+
+}
+
+#your-expenses {
+    border-left: 5px solid #1565c0; /* blue accent = "display" section */
+    background-color: #eef4fb;
+}
