@@ -1,26 +1,64 @@
-/* ---------- Element selectors ---------- */
-/* These target every element of that type on the page */
+/* =====================================================
+   BUDGET TRACKER - Week 3 visual design
+   Palette: deep teal + warm amber on soft grey-green
+   Fonts:   Poppins (headings)  +  Inter (body text)
+   ===================================================== */
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6f8;
-  margin: 0;
-  padding: 20px;
-  color: #222;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap");
+
+/* ---------- 1. Color palette + fonts (CSS variables) ---------- */
+:root {
+  --color-bg: #eef3f2;          /* page background */
+  --color-surface: #ffffff;     /* cards */
+  --color-primary: #0f766e;     /* teal: headings accents, buttons, table header */
+  --color-primary-dark: #115e59;/* button hover */
+  --color-accent: #f59e0b;      /* amber: highlights */
+  --color-text: #1f2937;        /* body text */
+  --color-muted: #6b7280;       /* secondary text */
+  --color-border: #d3e0de;      /* borders */
+  --color-row-alt: #edf6f5;     /* striped rows */
+  --color-row-hover: #cfe7e4;   /* row hover */
+
+  --font-heading: "Poppins", Georgia, sans-serif;
+  --font-body: "Inter", Arial, Helvetica, sans-serif;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+/* ---------- 2. Box model foundation ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* padding and border stay inside the set width */
+}
+
+/* ---------- Element selectors ---------- */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  margin: 0 auto;      /* centers the page */
+  max-width: 900px;
+  padding: 24px 16px;
+}
+
+h1,
+h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-dark);
+  line-height: 1.2;
 }
 
 h1 {
   margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 h2 {
-  margin-top: 0;
+  margin: 0 0 16px;
+  font-size: 1.35rem;
+  font-weight: 600;
 }
 
 img {
@@ -28,140 +66,202 @@ img {
 }
 
 label {
-  font-weight: bold;
   display: block;
-  margin-bottom: 4px;
-  font-size: 14px;
+  margin-bottom: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 input,
 select {
   display: block;
   width: 100%;
-  max-width: 300px;
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  max-width: 340px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
 }
 
 button {
-  background-color: #2e7d32;
-  color: white;
+  padding: 11px 22px;
   border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer; /* hand cursor on hover */
+  transition: background-color 0.2s;
 }
 
 button:hover {
-  background-color: #256428;
+  background-color: var(--color-primary-dark);
 }
 
 iframe {
   max-width: 100%;
   border: 0;
+  border-radius: 8px;
 }
 
 summary {
   cursor: pointer;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+details p {
+  margin: 12px 0 0;
+  color: var(--color-muted);
 }
 
 /* ---------- Class selectors ---------- */
 
+/* .card: every section is a distinct "card" using the box model:
+   margin (outside space), border, border-radius, padding (inside space) */
 .card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 0 0 24px;
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.08);
 }
 
 .subheading {
-  color: #555;
-  font-size: 15px;
-  margin: 4px 0 0;
+  margin: 6px 0 0;
+  font-size: 1rem;
+  color: var(--color-muted);
 }
 
 /* ---------- ID selectors ---------- */
 
 #budget-form {
-  border-left: 5px solid #2e7d32; /* green accent = "input" section */
+  border-top: 4px solid var(--color-primary);
 }
 
 #expenses-list {
-  border-left: 5px solid #1565c0; /* blue accent = "display" section */
-  background-color: #eef4fb;
+  border-top: 4px solid var(--color-accent);
+  background-color: var(--color-surface);
 }
 
 #how-to-use {
-  border-left: 5px solid #f9a825; /* amber accent = help section */
+  border-top: 4px solid var(--color-border);
+}
+
+/* ---------- Page heading as a card (no HTML change needed) ---------- */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 24px;
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  border-top: 4px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.08);
 }
 
 /* ---------- Table styling ---------- */
-
 table {
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid var(--color-border);
 }
 
 th,
 td {
-  padding: 10px 12px;
-  border: 1px solid #c5d3e3;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
   text-align: left;
 }
 
 thead th {
-  background-color: #1565c0;
-  color: white;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-/* alternating row colors (position-based pseudo-class) */
+/* alternating row colors */
 tbody tr:nth-child(even) {
-  background-color: #dde9f6;
+  background-color: var(--color-row-alt);
 }
 
 tbody tr:nth-child(odd) {
-  background-color: white;
+  background-color: var(--color-surface);
 }
 
-/* hover effect on rows (listed after nth-child so it wins) */
+/* hover effect on rows (after nth-child so it wins) */
 tbody tr:hover {
-  background-color: #b9d3ef;
+  background-color: var(--color-row-hover);
 }
 
 /* ---------- Advanced selectors ---------- */
 
-/* 1. Descendant selector: right-align the Amount column only inside the expenses section */
+/* Descendant selector: right-align the Amount column inside the expenses section */
 .expenses-section td:nth-child(2),
 .expenses-section th:nth-child(2) {
   text-align: right;
 }
 
-/* 2. Direct child selector: only <h2> sitting directly inside the form section */
+/* Direct child selector: only the <h2> directly inside the form section */
 .add-expense-section > h2 {
-  color: #2e7d32;
+  color: var(--color-primary);
 }
 
-/* 3. Position pseudo-class: bold the first cell of every row */
+/* Position pseudo-class: bold the first cell of every row */
 tbody tr td:first-child {
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* 4. Negation pseudo-class: style every input except checkboxes/radios/buttons */
-input:not([type="checkbox"]):not([type="radio"]):not([type="button"]) {
-  background-color: #fafafa;
+/* Negation pseudo-class: style inputs except checkboxes/radios/buttons */
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]),
+select {
+  background-color: #f9fbfa;
 }
 
-/* 5. Focus state for inputs and the dropdown */
+/* Focus state for inputs and the dropdown */
 input:focus,
 select:focus {
   outline: none;
-  border-color: #1565c0;
-  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.25);
-  background-color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.2);
+  background-color: #ffffff;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .card,
+  header {
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  .expenses-section {
+    overflow-x: auto; /* table scrolls instead of breaking the card */
+  }
 }
