@@ -1,78 +1,167 @@
-/*_----------------Element selectors-----------------*/
-/* These target every element of that type on the page. */
+/* ---------- Element selectors ---------- */
+/* These target every element of that type on the page */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f8;
-    margin: 0;
-    padding: 20px;
-    color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+  color: #222;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
-input {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+h2 {
+  margin-top: 0;
+}
+
+img {
+  height: auto;
 }
 
 label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 4px;
-    font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 button {
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer; /* hand cursor on hover */
 }
 
 button:hover {
-    background-color: #256428;
+  background-color: #256428;
 }
 
-/*----------------Class selectors-----------------*/
-/* .card is requested on both sections so they share a common "card" look */
+iframe {
+  max-width: 100%;
+  border: 0;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ---------- Class selectors ---------- */
+
 .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    padding: 15px;
-    margin-bottom: 19px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .subheading {
-    color: #555;
-    font-size: 15px;
+  color: #555;
+  font-size: 15px;
+  margin: 4px 0 0;
 }
 
-.placeholder {
-    color: #888;
-    font-style: italic;
+/* ---------- ID selectors ---------- */
+
+#budget-form {
+  border-left: 5px solid #2e7d32; /* green accent = "input" section */
 }
 
-/*----------------ID selectors-----------------*/
-/* These target one specific, unique element each. */
-#add-expense {
-    border-left: 5px solid #2e7d32; /* green accent = "input" section */
-
+#expenses-list {
+  border-left: 5px solid #1565c0; /* blue accent = "display" section */
+  background-color: #eef4fb;
 }
 
-#your-expenses {
-    border-left: 5px solid #1565c0; /* blue accent = "display" section */
-    background-color: #eef4fb;
+#how-to-use {
+  border-left: 5px solid #f9a825; /* amber accent = help section */
+}
+
+/* ---------- Table styling ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  border: 1px solid #c5d3e3;
+  text-align: left;
+}
+
+thead th {
+  background-color: #1565c0;
+  color: white;
+}
+
+/* alternating row colors (position-based pseudo-class) */
+tbody tr:nth-child(even) {
+  background-color: #dde9f6;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+/* hover effect on rows (listed after nth-child so it wins) */
+tbody tr:hover {
+  background-color: #b9d3ef;
+}
+
+/* ---------- Advanced selectors ---------- */
+
+/* 1. Descendant selector: right-align the Amount column only inside the expenses section */
+.expenses-section td:nth-child(2),
+.expenses-section th:nth-child(2) {
+  text-align: right;
+}
+
+/* 2. Direct child selector: only <h2> sitting directly inside the form section */
+.add-expense-section > h2 {
+  color: #2e7d32;
+}
+
+/* 3. Position pseudo-class: bold the first cell of every row */
+tbody tr td:first-child {
+  font-weight: bold;
+}
+
+/* 4. Negation pseudo-class: style every input except checkboxes/radios/buttons */
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]) {
+  background-color: #fafafa;
+}
+
+/* 5. Focus state for inputs and the dropdown */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.25);
+  background-color: white;
 }
